@@ -22,7 +22,7 @@ pipeline {
                   volumes:
                   - name: maven-cache
                     persistentVolumeClaim:
-                        claimName: efs-pvc
+                        claimName: jenkins-pv-claim
             '''
         }
     }
