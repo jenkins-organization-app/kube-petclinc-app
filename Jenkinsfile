@@ -22,14 +22,14 @@ pipeline {
                   volumes:
                   - name: maven-cache
                     persistentVolumeClaim:
-                        claimName: jenkins-pv-claim
+                        claimName: efs-pvc
             '''
         }
     }
 
     environment {
         DOCKER_HUB_REPO = "myubuntu890/jenkins-java-app"
-        IMAGE_TAG = "1.0.0"
+        IMAGE_TAG = "2.0.0"
     }
 
     stages {
