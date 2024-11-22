@@ -29,7 +29,7 @@ pipeline {
 
     environment {
         DOCKER_HUB_REPO = "myubuntu890/jenkins-java-app"
-        IMAGE_TAG = "2.0.0"
+        IMAGE_TAG = "1.0.0"
     }
 
     stages {
@@ -50,7 +50,7 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 container('kaniko') {
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_HUB_USR', passwordVariable: 'DOCKER_HUB_PSW')]) {
+                    withCredentials([usernamePassword(credentialsId: 'docker-credentials', usernameVariable: 'DOCKER_HUB_USR', passwordVariable: 'DOCKER_HUB_PSW')]) {
                     script {
                             sh """
                                 echo '{"auths":{"https://index.docker.io/v1/":{"auth":"'"\$(echo -n ${DOCKER_HUB_USR}:${DOCKER_HUB_PSW} | base64)"'"}}}' > /kaniko/.docker/config.json
